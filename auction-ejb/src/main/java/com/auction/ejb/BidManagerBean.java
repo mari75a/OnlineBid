@@ -2,6 +2,7 @@ package com.auction.ejb;
 
 import com.auction.ejb.entity.Bid;
 import jakarta.annotation.Resource;
+import jakarta.ejb.EJB;
 import jakarta.ejb.Stateful;
 import jakarta.inject.Inject;
 import jakarta.jms.*;
@@ -15,9 +16,14 @@ public class BidManagerBean {
     @Resource(lookup = "jms/bidTopic")
     private Topic bidTopic;
 
+    @EJB
+    private BidStorageBean bidStorage;
+
     public void placeBid(Bid bid) {
-        // Add your bid validation logic here
-        System.out.println("Bid placed: " + bid);
+        // Bid validation logic here
+        bidStorage.addBid(bid);
         context.createProducer().send(bidTopic, bid.toString());
+        System.out.println("📥 Bid stored and sent: " + bid);
     }
 }
+

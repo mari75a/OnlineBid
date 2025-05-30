@@ -62,7 +62,25 @@
             </div>
         </div>
     </div>
+    <hr class="my-4">
+    <h4>🔝 Live Bid Leaderboard</h4>
+    <p>Showing latest bids for item ID: <strong id="displayItemId">item101</strong></p>
+    <div id="leaderboard"></div>
 
+    <script>
+        const itemId = 'item101'; // You can make this dynamic later
+        document.getElementById("displayItemId").innerText = itemId;
+
+        function loadLeaderboard() {
+            fetch("leaderboard?itemId=" + itemId)
+                .then(response => response.text())
+                .then(html => document.getElementById("leaderboard").innerHTML = html);
+        }
+
+        // Auto-refresh leaderboard every 5 seconds
+        setInterval(loadLeaderboard, 5000);
+        loadLeaderboard();
+    </script>
     <footer class="mt-5 text-center text-muted small">
         Powered by EJB & JMS • Distributed Auction System • 2025
     </footer>
