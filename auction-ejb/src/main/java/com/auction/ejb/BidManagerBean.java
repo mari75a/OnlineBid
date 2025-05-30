@@ -23,14 +23,12 @@ public class BidManagerBean {
     @EJB
     private AuctionManagerBean auctionManager;
 
-    public void placeBid(Bid bid) {
-        // Validate if auction is active
+    public boolean placeBid(Bid bid) {
         if (!auctionManager.isAuctionActive(bid.getItemId())) {
             System.out.println("❌ Auction not active for item: " + bid.getItemId());
-            return;
+            return false;
         }
 
-        // Validate if bid amount is higher
         List<Bid> existingBids = bidStorage.getBids(bid.getItemId());
         double maxAmount = existingBids.stream()
                 .mapToDouble(Bid::getAmount)
@@ -39,12 +37,13 @@ public class BidManagerBean {
 
         if (bid.getAmount() <= maxAmount) {
             System.out.println("❌ Invalid bid. Must be higher than current max: $" + maxAmount);
-            return;
+            return false;
         }
 
-        // Passed: Store bid and notify
         bidStorage.addBid(bid);
         context.createProducer().send(bidTopic, bid.toString());
         System.out.println("✅ Bid placed: " + bid);
+        return true;
     }
+
 }
