@@ -36,16 +36,16 @@ public class BidServlet extends HttpServlet {
 
             boolean success = bidManager.placeBid(bid); // modify return type below
             if (success) {
-                out.println("✅ Bid placed successfully!");
+                out.println("Bid placed successfully!");
             } else {
-                out.println("❌ Bid was rejected. Check the bid amount or auction status.");
+                out.println(" Bid was rejected. Check the bid amount or auction status.");
             }
 
         } catch (NumberFormatException e) {
-            out.println("❌ Invalid bid amount. Please enter a valid number.");
+            out.println(" Invalid bid amount. Please enter a valid number.");
         } catch (Exception e) {
             e.printStackTrace(out);
-            out.println("❌ An unexpected error occurred.");
+            out.println(" An unexpected error occurred.");
         }
     }
 }

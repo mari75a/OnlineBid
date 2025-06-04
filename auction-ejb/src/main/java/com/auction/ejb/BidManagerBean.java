@@ -25,7 +25,7 @@ public class BidManagerBean {
 
     public boolean placeBid(Bid bid) {
         if (!auctionManager.isAuctionActive(bid.getItemId())) {
-            System.out.println("❌ Auction not active for item: " + bid.getItemId());
+            System.out.println(" Auction not active for item: " + bid.getItemId());
             return false;
         }
 
@@ -36,13 +36,13 @@ public class BidManagerBean {
                 .orElse(0.0);
 
         if (bid.getAmount() <= maxAmount) {
-            System.out.println("❌ Invalid bid. Must be higher than current max: $" + maxAmount);
+            System.out.println(" Invalid bid. Must be higher than current max: $" + maxAmount);
             return false;
         }
 
         bidStorage.addBid(bid);
         context.createProducer().send(bidTopic, bid.toString());
-        System.out.println("✅ Bid placed: " + bid);
+        System.out.println(" Bid placed: " + bid);
         return true;
     }
 
