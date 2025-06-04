@@ -12,12 +12,12 @@ public class AuctionManagerBean {
 
     public void startAuction(String itemId) {
         auctionStatus.put(itemId, true);
-        System.out.println("🔔 Auction started for: " + itemId);
+        System.out.println(" Auction started for: " + itemId);
     }
 
     public void endAuction(String itemId) {
         auctionStatus.put(itemId, false);
-        System.out.println("🔕 Auction ended for: " + itemId);
+        System.out.println(" Auction ended for: " + itemId);
     }
 
     public boolean isAuctionActive(String itemId) {
