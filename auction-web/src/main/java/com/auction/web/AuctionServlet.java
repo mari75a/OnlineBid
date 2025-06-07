@@ -20,15 +20,15 @@ public class AuctionServlet extends HttpServlet {
         if (action != null && itemId != null) {
             if (action.equals("start")) {
                 auctionManager.startAuction(itemId);
-                response.getWriter().println("✅ Auction started for item: " + itemId);
+                response.getWriter().println(" Auction started for item: " + itemId);
             } else if (action.equals("end")) {
                 auctionManager.endAuction(itemId);
-                response.getWriter().println("✅ Auction ended for item: " + itemId);
+                response.getWriter().println(" Auction ended for item: " + itemId);
             } else {
-                response.getWriter().println("⚠️ Unknown action: " + action);
+                response.getWriter().println(" Unknown action: " + action);
             }
         } else {
-            response.getWriter().println("❌ Missing parameters.");
+            response.getWriter().println(" Missing parameters.");
         }
     }
 }

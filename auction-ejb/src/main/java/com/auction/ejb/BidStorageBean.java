@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Singleton
 public class BidStorageBean {
 
-    // Stores itemId → list of bids
+
     private final Map<String, List<Bid>> bidMap = new ConcurrentHashMap<>();
 
     public void addBid(Bid bid) {

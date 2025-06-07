@@ -34,7 +34,7 @@ public class BidServlet extends HttpServlet {
             bid.setItemId(itemId);
             bid.setAmount(amount);
 
-            boolean success = bidManager.placeBid(bid); // modify return type below
+            boolean success = bidManager.placeBid(bid);
             if (success) {
                 out.println("Bid placed successfully!");
             } else {

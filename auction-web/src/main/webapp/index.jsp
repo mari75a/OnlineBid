@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Live Auction Platform</title>
-    <!-- Bootstrap CDN -->
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -68,7 +68,7 @@
     <div id="leaderboard"></div>
 
     <script>
-        const itemId = 'item101'; // You can make this dynamic later
+        const itemId = 'item101';
         document.getElementById("displayItemId").innerText = itemId;
 
         function loadLeaderboard() {
@@ -77,16 +77,16 @@
                 .then(html => document.getElementById("leaderboard").innerHTML = html);
         }
 
-        // Auto-refresh leaderboard every 5 seconds
+
         setInterval(loadLeaderboard, 5000);
         loadLeaderboard();
     </script>
     <footer class="mt-5 text-center text-muted small">
-        Powered by EJB & JMS • Distributed Auction System • 2025
+        Powered by Sangeeth Lakshan • Distributed Auction System • 2025
     </footer>
 </div>
 
-<!-- Bootstrap JS (optional for components) -->
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
